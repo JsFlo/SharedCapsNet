@@ -75,9 +75,9 @@ def _round_agreement(round_output, digit_capsule_output, primary_n_caps):
     # the copy&paste
     round_output_tiled = tf.tile(
         round_output, [1, primary_n_caps, 1, 1, 1])
-    print("NORMAL tiled {}".format(round_output_tiled.shape))
+    #print("NORMAL tiled {}".format(round_output_tiled.shape))
     # that scalar product we talked about above
     agreement = tf.matmul(digit_capsule_output, round_output_tiled, transpose_a=True)
     # (?, 1152, 10, 1, 1)
-    print("NORMAL AGREEMENT: {}".format(agreement.shape))
+    #print("NORMAL AGREEMENT: {}".format(agreement.shape))
     return agreement
