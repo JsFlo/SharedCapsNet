@@ -9,28 +9,26 @@ MNIST = input_data.read_data_sets("/tmp/data/")
 
 parser = argparse.ArgumentParser()
 # REQUIRED
-parser.add_argument('--checkpoint_dir', type=str, required=False,default="test_checkPoint",
+parser.add_argument('--checkpoint_dir', type=str, required=False, default="test_checkPoint",
                     help='Directory where the checkpoints will be saved')
 parser.add_argument('--checkpoint_name', type=str, required=False, default="my_model",
                     help='Checkpoint name')
 # OPTIONAL
 parser.add_argument('--restore_checkpoint', type=bool, default=True)
-parser.add_argument('--batch_size', type=int, default=1)
-parser.add_argument('--n_epochs', type=int, default=1)
+parser.add_argument('--batch_size', type=int, default=50)
+parser.add_argument('--n_epochs', type=int, default=10)
 parser.add_argument('--debug', type=bool, default=False)
 FLAGS = parser.parse_args()
 
-N_ITERATIONS_PER_EPOCH = 1# MNIST.train.num_examples // FLAGS.batch_size
-N_ITERATIONS_VALIDATION = 1 #MNIST.validation.num_examples // FLAGS.batch_size
-# if (FLAGS.debug):
-#     FLAGS.batch_size = 1
-#     FLAGS.n_epochs = 1
-#     N_ITERATIONS_PER_EPOCH = 1
-#     N_ITERATIONS_VALIDATION = 1
-# else:
-#     N_ITERATIONS_PER_EPOCH = MNIST.train.num_examples // FLAGS.batch_size
-#     N_ITERATIONS_VALIDATION = MNIST.validation.num_examples // FLAGS.batch_size
-#
+if (FLAGS.debug):
+    FLAGS.batch_size = 1
+    FLAGS.n_epochs = 1
+    N_ITERATIONS_PER_EPOCH = 1
+    N_ITERATIONS_VALIDATION = 1
+else:
+    N_ITERATIONS_PER_EPOCH = MNIST.train.num_examples // FLAGS.batch_size
+    N_ITERATIONS_VALIDATION = MNIST.validation.num_examples // FLAGS.batch_size
+
 CHECKPOINT_PATH = FLAGS.checkpoint_dir + "/" + FLAGS.checkpoint_name
 
 BEST_LOSS_VAL = np.infty
