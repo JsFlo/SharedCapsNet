@@ -4,7 +4,7 @@ import RoutingByAgreement
 from utils import safe_norm
 from Loss import get_margin_loss
 from Loss import get_reconstruction_loss
-
+from CapsuleLayer import CapsuleLayer
 
 class Model(object):
     '''
@@ -13,10 +13,12 @@ class Model(object):
 
     def __init__(self, input_image_batch, batch_size):
 
-        capsule_layer = ConvCapsuleLayer(1152, 8, 10, 16)
-        capsules, capsule_prediction= capsule_layer(input_image_batch, batch_size)
+        capsule_layer = ConvCapsuleLayer(1152, 8)
+        capsules= capsule_layer(input_image_batch)
 
-        routing_output = RoutingByAgreement.routing_by_agreement(capsule_prediction, batch_size)
+        digit_caps_layer = CapsuleLayer(1152, 8, 10, 16)
+
+        routing_output = digit_caps_layer(capsules, batch_size)
 
         # single digit prediction
         single_digit_prediction = self._transform_model_output_to_a_single_digit(routing_output)
