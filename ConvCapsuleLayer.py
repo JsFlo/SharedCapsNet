@@ -7,7 +7,7 @@ class ConvCapsuleLayer(object):
     Convolutional Capsule Layer
     '''
 
-    def __init__(self, n_capsules, capsule_length):
+    def __init__(self, n_capsules, capsule_length, n_next_layer_capsules, n_next_layer_capsule_length):
         '''
 
         :param n_capsules: number of capsules
@@ -15,8 +15,10 @@ class ConvCapsuleLayer(object):
         '''
         self.n_capsules = n_capsules
         self.capsule_length = capsule_length
+        self.n_next_layer_capsules = n_next_layer_capsules
+        self.n_next_layer_capsule_length = n_next_layer_capsule_length
 
-    def __call__(self, input):
+    def __call__(self, input, batch_size):
         '''
 
         :param input: 4D tensor
@@ -25,9 +27,12 @@ class ConvCapsuleLayer(object):
         conv_output = self._get_conv_output(input)
         # flatten
         flatten_caps = tf.reshape(conv_output, [-1, self.n_capsules, self.capsule_length])
-
+        final_capsules = squash(flatten_caps)
         # squash to keep the vectors under 1
-        return squash(flatten_caps)
+        return final_capsules, self._transform_capsule_prediction_for_layer(batch_size, final_capsules,
+                                                                            self.n_capsules, self.capsule_length,
+                                                                            self.n_next_layer_capsules,
+                                                                            self.n_next_layer_capsule_length)
 
     def _get_conv_output(self, input):
         conv1 = tf.layers.conv2d(input, filters=256, kernel_size=9, strides=1,
@@ -41,11 +46,11 @@ class ConvCapsuleLayer(object):
         # printShape(conv2)  # (?, 6, 6, 256)
         return conv2
 
-    def transform_capsule_prediction_for_layer(batch_size, last_layer_capsules,
-                                               n_last_layer_capsules,
-                                               n_last_layer_capsule_length,
-                                               n_next_layer_capsules,
-                                               n_next_layer_capsule_length):
+    def _transform_capsule_prediction_for_layer(self, batch_size, last_layer_capsules,
+                                                n_last_layer_capsules,
+                                                n_last_layer_capsule_length,
+                                                n_next_layer_capsules,
+                                                n_next_layer_capsule_length):
         # The way to go from 8 dimensions to 16 dimensions is to use a **transformation matrix** for each pair (i, j)
         # For each capsule in the first layer *foreach (1, 8) in (1152, 8)* we want to predict the output of every capsule in this layer
 

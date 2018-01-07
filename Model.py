@@ -13,12 +13,8 @@ class Model(object):
 
     def __init__(self, input_image_batch, batch_size):
 
-        capsule_layer = ConvCapsuleLayer(1152, 8)
-        capsules = capsule_layer(input_image_batch)
-        capsule_prediction = ConvCapsuleLayer.transform_capsule_prediction_for_layer(batch_size,
-                                                                                     capsules,
-                                                                                     1152, 8,
-                                                                                     10, 16)
+        capsule_layer = ConvCapsuleLayer(1152, 8, 10, 16)
+        capsules, capsule_prediction= capsule_layer(input_image_batch, batch_size)
 
         routing_output = RoutingByAgreement.routing_by_agreement(capsule_prediction, batch_size)
 
