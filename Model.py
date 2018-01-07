@@ -5,7 +5,8 @@ from ConvCapsuleLayer import ConvCapsuleLayer
 from Loss import get_margin_loss
 from Loss import get_reconstruction_loss
 from utils import safe_norm
-
+from CapsuleLayer import ConvAdapter
+from CapsuleLayer import CapsAdapter
 
 class Model(object):
     '''
@@ -14,25 +15,15 @@ class Model(object):
 
     def __init__(self, input_image_batch, batch_size):
 
-        capsule_layer = ConvCapsuleLayer(1152, 8)
-        capsules= capsule_layer(input_image_batch)
-        print("HELLO: {} ".format(capsules.shape))
-        caps1_output_expanded = tf.expand_dims(capsules, -1)
+        conv_caps_layer = ConvCapsuleLayer(1152, 8)
+        conv_caps = conv_caps_layer(input_image_batch)
 
-        # (BATCH_SIZE, 1152, 8, 1) -> (BATCH_SIZE, 1152, 1, 8, 1)
-        caps1_output_tile = tf.expand_dims(caps1_output_expanded, 2)
-        print("HELLO!!!!:{}".format(caps1_output_tile.shape))
-        #
-        # assumes input of (?, 1152, 1, 8, 1)
-        digit_caps_layer = CapsuleLayer(1152, 8, 10, 16)
-        routing_output = digit_caps_layer(caps1_output_tile, batch_size)
-        #print("HELLLLO: {}".format(routing_output.shape))
+        digit_caps_layer = CapsuleLayer(1152, 8, 10, 16, ConvAdapter())
+        routing_output = digit_caps_layer(conv_caps, batch_size)
+        # (?, 1, caps, dims, 1)
 
-        # test_digit_caps_layer = CapsuleLayer(10, 16, 5, 3)
+        # test_digit_caps_layer = CapsuleLayer(10, 16, 5, 3, CapsAdapter())
         # test_routing_output = test_digit_caps_layer(routing_output, batch_size)
-        # print("here")
-        # print(test_routing_output.shape)
-
 
         # single digit prediction
         single_digit_prediction = self._transform_model_output_to_a_single_digit(routing_output)
@@ -87,6 +78,7 @@ class Model(object):
         y_pred = tf.squeeze(y_prob_argmax, axis=[1, 2])
         return y_pred
 
+
 def _get_reconstruction_loss(mask_with_labels, y, y_pred, digitCaps_postRouting, input_image_batch):
     # first take the 10 16-dimension vectors output and pulls out the [predicted digit vector|correct_label digit vector)
     # (ex. prediction: digit 3 so take the 16-dimension vector and pass it to the decoder)
@@ -106,7 +98,7 @@ def _get_reconstruction_loss(mask_with_labels, y, y_pred, digitCaps_postRouting,
 
     # mask it! (10, 16) * [0, 0, 1, 0, 0, ...]
     masked_out = tf.multiply(digitCaps_postRouting, reconstruction_mask_reshaped)
-    #print("shape!!!!!!: {}".format(masked_out))
+    # print("shape!!!!!!: {}".format(masked_out))
     # masked out
     # (10, 16) but only (1, 16) has values because of the above
 
