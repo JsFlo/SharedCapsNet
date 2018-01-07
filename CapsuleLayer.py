@@ -8,11 +8,12 @@ class CapsuleLayer(object):
     '''
 
     def __init__(self, input_n_caps, input_n_dims,
-                 output_n_caps, output_n_dims):
+                 output_n_caps, output_n_dims, init_sigma=0.01):
         self.input_n_caps = input_n_caps
         self.input_n_dims = input_n_dims
         self.output_n_caps = output_n_caps
         self.output_n_dims = output_n_dims
+        self.init_sigma = init_sigma
 
     def __call__(self, input_caps, batch_size):
         last_layer_prediction = self._transform_capsule_prediction_for_layer(batch_size, input_caps,
@@ -39,12 +40,10 @@ class CapsuleLayer(object):
         # what we want: (?, 1152, 10, 16, 8) "an 1152 by 10 matrix of 16x8 matrix"
 
         # transformation matrix weights
-        init_sigma = 0.01
-
         W_init = tf.random_normal(
             shape=(1, n_last_layer_capsules, n_next_layer_capsules,
                    n_next_layer_capsule_length, n_last_layer_capsule_length),
-            stddev=init_sigma, dtype=tf.float32)
+            stddev=self.init_sigma, dtype=tf.float32)
         W = tf.Variable(W_init)
 
         # copy paste for batch size to get (BATCH_SIZE, 1152, 10, 16, 8)

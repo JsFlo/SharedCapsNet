@@ -1,10 +1,11 @@
-from ConvCapsuleLayer import ConvCapsuleLayer
 import tensorflow as tf
-import RoutingByAgreement
-from utils import safe_norm
+
+from CapsuleLayer import CapsuleLayer
+from ConvCapsuleLayer import ConvCapsuleLayer
 from Loss import get_margin_loss
 from Loss import get_reconstruction_loss
-from CapsuleLayer import CapsuleLayer
+from utils import safe_norm
+
 
 class Model(object):
     '''

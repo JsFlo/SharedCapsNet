@@ -3,18 +3,17 @@ import numpy as np
 from utils import squash
 
 
-def routing_by_agreement(digit_caps, batch_size):
+def routing_by_agreement(digit_caps, batch_size, n_rounds=3):
     # weight for every pair
     raw_weights = tf.zeros([batch_size,
                             digit_caps.shape[1].value,
                             digit_caps.shape[2].value, 1, 1],
                            dtype=np.float32)
     # (?, 1152, 10, 1, 1)
-
-    round1_output, round1_weights = _round_and_agreement(raw_weights, digit_caps, 1152, True)
-    round2_output, round2_weights = _round_and_agreement(round1_weights, digit_caps, 1152, True)
-    round3_output = _round_and_agreement(round2_weights, digit_caps, 1152, False)
-    return round3_output
+    last_output, last_round_weights = _round_and_agreement(raw_weights, digit_caps, digit_caps.shape[1].value, True)
+    for i in range(1, n_rounds):
+        last_output, last_round_weights = _round_and_agreement(last_round_weights, digit_caps, digit_caps.shape[1].value, True)
+    return last_output
 
 
 def _round_and_agreement(weights, capsules, n_capsules, get_round_agreement=True):
