@@ -18,11 +18,11 @@ class Model(object):
         conv_caps_layer = ConvCapsuleLayer(1152, 8)
         conv_caps = conv_caps_layer(input_image_batch)
 
-        digit_caps_layer = CapsuleLayer(1152, 8, 50, 16, ConvAdapter())
+        digit_caps_layer = CapsuleLayer(1152, 8, 20, 16, ConvAdapter())
         routing_output1 = digit_caps_layer(conv_caps, batch_size)
         # (?, 1, caps, dims, 1)
 
-        digit_caps2_layer = CapsuleLayer(50, 16, 10, 16, CapsAdapter())
+        digit_caps2_layer = CapsuleLayer(20, 16, 10, 16, CapsAdapter())
         routing_output2 = digit_caps2_layer(routing_output1, batch_size)
         # test_digit_caps_layer = CapsuleLayer(10, 16, 5, 3, CapsAdapter())
         # test_routing_output = test_digit_caps_layer(routing_output, batch_size)
