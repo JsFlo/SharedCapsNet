@@ -7,6 +7,9 @@ from Loss import get_reconstruction_loss
 from utils import safe_norm
 from CapsuleLayer import ConvAdapter
 from CapsuleLayer import CapsAdapter
+from ConvCapsuleLayer import SmallConvOutput
+from ConvCapsuleLayer import SimpleConvOutput
+
 
 class Model(object):
     '''
@@ -14,9 +17,13 @@ class Model(object):
     '''
 
     def __init__(self, input_image_batch, batch_size):
+        conv_caps_layer1 = ConvCapsuleLayer(1152, 3, SmallConvOutput())
+        conv_caps1 = conv_caps_layer1(input_image_batch)
 
-        conv_caps_layer = ConvCapsuleLayer(2304, 3)
-        conv_caps = conv_caps_layer(input_image_batch)
+        conv_caps_layer2 = ConvCapsuleLayer(1152, 3, SimpleConvOutput())
+        conv_caps2 = conv_caps_layer2(input_image_batch)
+
+        conv_caps = tf.concat([conv_caps1, conv_caps2], 1)
 
         # conv_caps_layer = ConvCapsuleLayer(1152, 3)
         # conv_caps = conv_caps_layer(input_image_batch)
