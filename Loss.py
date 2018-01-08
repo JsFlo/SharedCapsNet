@@ -30,9 +30,8 @@ def get_reconstruction_loss(capsules, target_images):
     :return: loss
     """
     n_output = 28 * 28
-
     # flatten - reshape capsules to an array
-    decoder_input = tf.reshape(capsules, [-1, 10 * 16])
+    decoder_input = tf.reshape(capsules, [-1, capsules.shape[2].value * capsules.shape[3].value])
 
     # get prediction array
     decoder_output = _get_tf_layers_impl(decoder_input, n_output)
