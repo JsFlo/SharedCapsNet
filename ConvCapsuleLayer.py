@@ -1,7 +1,6 @@
 import tensorflow as tf
 from utils import squash
 
-
 class ConvCapsuleLayer(object):
     '''
     Convolutional Capsule Layer
@@ -35,8 +34,11 @@ class ConvCapsuleLayer(object):
 
         # printShape(conv1)  # (?, 20, 20, 256)
 
+        # because of the kernel size and strides the output grid will be 6 x 6 x ?
+        # 6x6 = 36
+        n_filters = (self.n_capsules * self.capsule_length) / 36
         # stride of 2!
-        conv2 = tf.layers.conv2d(conv1, filters=256, kernel_size=9, strides=2,
+        conv2 = tf.layers.conv2d(conv1, filters=n_filters, kernel_size=9, strides=2,
                                  padding="valid", activation=tf.nn.relu)
         # printShape(conv2)  # (?, 6, 6, 256)
         return conv2

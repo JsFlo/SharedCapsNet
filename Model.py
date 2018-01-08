@@ -15,33 +15,36 @@ class Model(object):
 
     def __init__(self, input_image_batch, batch_size):
 
-        conv_caps_layer = ConvCapsuleLayer(1152, 8)
+        conv_caps_layer = ConvCapsuleLayer(1152, 3)
         conv_caps = conv_caps_layer(input_image_batch)
 
-        digit_caps_layer = CapsuleLayer(1152, 8, 20, 16, ConvAdapter())
+        # conv_caps_layer = ConvCapsuleLayer(1152, 3)
+        # conv_caps = conv_caps_layer(input_image_batch)
+
+        digit_caps_layer = CapsuleLayer(1152, 3, 10, 16, ConvAdapter())
         routing_output1 = digit_caps_layer(conv_caps, batch_size)
         # (?, 1, caps, dims, 1)
 
-        digit_caps2_layer = CapsuleLayer(20, 16, 10, 16, CapsAdapter())
-        routing_output2 = digit_caps2_layer(routing_output1, batch_size)
-        # test_digit_caps_layer = CapsuleLayer(10, 16, 5, 3, CapsAdapter())
-        # test_routing_output = test_digit_caps_layer(routing_output, batch_size)
+        # digit_caps2_layer = CapsuleLayer(20, 16, 10, 16, CapsAdapter())
+        # routing_output2 = digit_caps2_layer(routing_output1, batch_size)
+
+        final_model_output = routing_output1
 
         # single digit prediction
-        single_digit_prediction = self._transform_model_output_to_a_single_digit(routing_output2)
+        single_digit_prediction = self._transform_model_output_to_a_single_digit(final_model_output)
         # (?, )
 
         # labels
         correct_labels_placeholder = tf.placeholder(shape=[None], dtype=tf.int64)
 
         # loss
-        margin_loss = get_margin_loss(correct_labels_placeholder, routing_output2)
+        margin_loss = get_margin_loss(correct_labels_placeholder, final_model_output)
         mask_with_labels = tf.placeholder_with_default(False, shape=())
 
         reconstruction_loss, decoder_output, masked_out = _get_reconstruction_loss(mask_with_labels,
                                                                                    correct_labels_placeholder,
                                                                                    single_digit_prediction,
-                                                                                   routing_output2,
+                                                                                   final_model_output,
                                                                                    input_image_batch)
 
         # keep it small
@@ -54,7 +57,7 @@ class Model(object):
         optimizer = tf.train.AdamOptimizer()
         self.training_op = optimizer.minimize(final_loss)
 
-        self.digit_caps_routing_output = routing_output2
+        self.digit_caps_routing_output = final_model_output
         self.final_loss = final_loss
         self.correct = correct
         self.accuracy = accuracy
