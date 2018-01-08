@@ -1,0 +1,12 @@
+2018-01-07 20:51:19.472201: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Quadro M4000, pci bus id: 0000:00:05.0)
+Epoch: 1  Val accuracy: 98.680%  Loss: 0.44024  
+(improved)
+Epoch: 2  Val accuracy: 98.900%  Loss: 0.30967  
+(improved)
+Epoch: 3  Val accuracy: 99.080%  Loss: 0.25613  
+(improved)
+Epoch: 4  Val accuracy: 99.300%  Loss: 0.22449  
+(improved)
+Epoch: 5  Val accuracy: 99.280%  Loss: 0.20745  
+(improved)
+
