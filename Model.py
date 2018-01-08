@@ -15,13 +15,13 @@ class Model(object):
 
     def __init__(self, input_image_batch, batch_size):
 
-        conv_caps_layer = ConvCapsuleLayer(1152, 3)
+        conv_caps_layer = ConvCapsuleLayer(2304, 3)
         conv_caps = conv_caps_layer(input_image_batch)
 
         # conv_caps_layer = ConvCapsuleLayer(1152, 3)
         # conv_caps = conv_caps_layer(input_image_batch)
 
-        digit_caps_layer = CapsuleLayer(1152, 3, 10, 16, ConvAdapter())
+        digit_caps_layer = CapsuleLayer(2304, 3, 10, 16, ConvAdapter())
         routing_output1 = digit_caps_layer(conv_caps, batch_size)
         # (?, 1, caps, dims, 1)
 
