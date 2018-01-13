@@ -45,6 +45,8 @@ final_loss = model.final_loss
 correct_labels_placeholder = model.correct_labels_placeholder
 mask_with_labels = model.mask_with_labels
 accuracy = model.accuracy
+margin_loss = model.margin_loss
+reconstruction_loss = model.reconstruction_loss
 
 init = tf.global_variables_initializer()
 saver = tf.train.Saver()
@@ -59,36 +61,42 @@ with tf.Session() as sess:
         for iteration in range(1, N_ITERATIONS_PER_EPOCH + 1):
             X_batch, y_batch = MNIST.train.next_batch(FLAGS.batch_size)
             # train and get loss to log
-            _, loss_train = sess.run([training_op, final_loss],
+            _, loss_train, margin_loss_val, reconstruction_loss_val = sess.run([training_op, final_loss, margin_loss, reconstruction_loss],
                                      feed_dict={input_image_batch: X_batch.reshape([-1, 28, 28, 1]),
                                                 correct_labels_placeholder: y_batch,
                                                 mask_with_labels: True})  # use labels during training for the decoder
 
-            print("\rIteration: {}/{} ({:.1f}%)  Loss: {:.5f}".format(
+            print("\rIteration: {}/{} ({:.1f}%)  Loss: {:.5f} Margin Loss: {:.5f} ReconLoss: {:.5f}".format(
                 iteration, N_ITERATIONS_PER_EPOCH,
                 iteration * 100 / N_ITERATIONS_PER_EPOCH,
-                loss_train),
+                loss_train, margin_loss_val, reconstruction_loss_val),
                 end="")
 
         # check against validation set and log it
         loss_vals = []
         acc_vals = []
+        marg_loss_vals = []
+        recons_loss_vals = []
         for iteration in range(1, N_ITERATIONS_VALIDATION + 1):
             X_batch, y_batch = MNIST.validation.next_batch(FLAGS.batch_size)
-            loss_val, acc_val = sess.run(
-                [final_loss, accuracy],
+            loss_val, acc_val, marg_loss_val, recon_loss_val= sess.run(
+                [final_loss, accuracy, margin_loss, reconstruction_loss],
                 feed_dict={input_image_batch: X_batch.reshape([-1, 28, 28, 1]),
                            correct_labels_placeholder: y_batch})
             loss_vals.append(loss_val)
             acc_vals.append(acc_val)
+            marg_loss_vals.append(marg_loss_val)
+            recons_loss_vals.append(recon_loss_val)
             print("\rEvaluating the model: {}/{} ({:.1f}%)".format(
                 iteration, N_ITERATIONS_VALIDATION,
                 iteration * 100 / N_ITERATIONS_VALIDATION),
                 end=" " * 10)
         loss_val = np.mean(loss_vals)
         acc_val = np.mean(acc_vals)
-        print("\rEpoch: {}  Val accuracy: {:.3f}%  Loss: {:.5f}".format(
-            epoch + 1, acc_val * 100, loss_val))
+        final_marg_loss = np.mean(marg_loss_vals)
+        final_recons_loss = np.mean(recons_loss_vals)
+        print("\rEpoch: {}  Val accuracy: {:.3f}%  Loss: {:.5f} Margin Loss: {:.5f} ReconLoss: {:.5f}".format(
+            epoch + 1, acc_val * 100, loss_val, final_marg_loss, final_recons_loss))
 
         # save if improved
         if loss_val < best_loss_val:

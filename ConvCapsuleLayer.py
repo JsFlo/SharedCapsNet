@@ -4,7 +4,7 @@ from utils import squash
 
 class SingleConvOutput(object):
     def get_conv_output(self, input, n_caps, n_dims):
-        n_filters = int((n_caps * n_dims) / 1)
+        n_filters = int(int(n_caps * n_dims) / 1)
         conv1 = tf.layers.conv2d(input, filters=n_filters, kernel_size=28, strides=1,
                                  padding="valid", activation=tf.nn.relu)
         return conv1
@@ -19,7 +19,7 @@ class SimpleConvOutput(object):
 
         # because of the kernel size and strides the output grid will be 6 x 6 x ?
         # 6x6 = 36
-        n_filters = (n_caps * n_dims) / 36
+        n_filters = int(n_caps * n_dims) / 36
         # stride of 2!
         conv2 = tf.layers.conv2d(conv1, filters=n_filters, kernel_size=9, strides=2,
                                  padding="valid", activation=tf.nn.relu)

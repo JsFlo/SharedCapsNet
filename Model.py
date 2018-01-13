@@ -88,6 +88,8 @@ class Model(object):
         self.single_digit_prediction = single_digit_prediction
         self.correct_labels_placeholder = correct_labels_placeholder
         self.masked_out = masked_out
+        self.margin_loss = margin_loss
+        self.reconstruction_loss = reconstruction_loss
 
     def _transform_model_output_to_a_single_digit(self, digitCaps_postRouting):
         # what we have: 10 16-dimensional vectors
