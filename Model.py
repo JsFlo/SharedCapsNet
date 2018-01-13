@@ -38,14 +38,14 @@ class Model(object):
         # conv_caps_layer = ConvCapsuleLayer(1152, 3)
         # conv_caps = conv_caps_layer(input_image_batch)
 
-        digit_caps_layer = CapsuleLayer(1152 + 1152, 3, 10, 24, ConvAdapter())
+        digit_caps_layer = CapsuleLayer(1152 + 1152, 3, 10, 20, ConvAdapter())
         routing_output1 = digit_caps_layer(conv_caps, batch_size)
         # (?, 1, caps, dims, 1)
 
-        # digit_caps2_layer = CapsuleLayer(20, 16, 10, 16, CapsAdapter())
-        # routing_output2 = digit_caps2_layer(routing_output1, batch_size)
+        digit_caps2_layer = CapsuleLayer(10, 20, 10, 16, CapsAdapter())
+        routing_output2 = digit_caps2_layer(routing_output1, batch_size)
 
-        final_model_output = routing_output1
+        final_model_output = routing_output2
 
         # single digit prediction
         single_digit_prediction = self._transform_model_output_to_a_single_digit(final_model_output)
