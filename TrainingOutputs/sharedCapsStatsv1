@@ -1,0 +1,20 @@
+Epoch: 1  Val accuracy: 98.940%  Loss: 0.39744  
+(improved)
+Epoch: 2  Val accuracy: 99.160%  Loss: 0.28705  
+(improved)
+Epoch: 3  Val accuracy: 99.340%  Loss: 0.23742  
+(improved)
+Epoch: 4  Val accuracy: 99.380%  Loss: 0.20596  
+(improved)
+Epoch: 5  Val accuracy: 99.440%  Loss: 0.18463  
+(improved)
+Epoch: 6  Val accuracy: 99.440%  Loss: 0.17264  
+(improved)
+Epoch: 7  Val accuracy: 99.440%  Loss: 0.16316  
+(improved)
+Epoch: 8  Val accuracy: 99.480%  Loss: 0.15622  
+(improved)
+Epoch: 9  Val accuracy: 99.380%  Loss: 0.15076  
+(improved)
+Epoch: 10  Val accuracy: 99.460%  Loss: 0.14775 
+(improved)
