@@ -70,7 +70,7 @@ class Model(object):
                                                                                    input_image_batch)
 
         # keep it small
-        reconstruction_alpha = 0.0005
+        reconstruction_alpha = 0.001
         # favor the margin loss with a small weight for reconstruction loss
         final_loss = tf.add(margin_loss, reconstruction_alpha * reconstruction_loss)
 
