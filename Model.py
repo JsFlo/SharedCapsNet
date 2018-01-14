@@ -38,7 +38,7 @@ class Model(object):
         # conv_caps_layer = ConvCapsuleLayer(1152, 3)
         # conv_caps = conv_caps_layer(input_image_batch)
 
-        digit_caps_layer = CapsuleLayer(1152 + 1152, 2, 10, 20, ConvAdapter())
+        digit_caps_layer = CapsuleLayer(1152 + 1152, 2, 10, 6, ConvAdapter())
         routing_output1 = digit_caps_layer(conv_caps, batch_size)
         # (?, 1, caps, dims, 1)
         #
