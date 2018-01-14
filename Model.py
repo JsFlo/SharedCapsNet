@@ -18,11 +18,11 @@ class Model(object):
     '''
 
     def __init__(self, input_image_batch, batch_size):
-        conv_caps_layer1 = ConvCapsuleLayer(1152, 3, SmallConvOutput())
+        conv_caps_layer1 = ConvCapsuleLayer(1152, 6, SmallConvOutput())
         conv_caps1 = conv_caps_layer1(input_image_batch)
 
         print("conv1: {}".format(conv_caps1.shape))
-        conv_caps_layer2 = ConvCapsuleLayer(1152, 3, SimpleConvOutput())
+        conv_caps_layer2 = ConvCapsuleLayer(1152, 6, SimpleConvOutput())
         conv_caps2 = conv_caps_layer2(input_image_batch)
         print("conv2: {}".format(conv_caps2.shape))
 
@@ -38,7 +38,7 @@ class Model(object):
         # conv_caps_layer = ConvCapsuleLayer(1152, 3)
         # conv_caps = conv_caps_layer(input_image_batch)
 
-        digit_caps_layer = CapsuleLayer(1152 + 1152, 3, 10, 20, ConvAdapter())
+        digit_caps_layer = CapsuleLayer(1152 + 1152, 6, 10, 20, ConvAdapter())
         routing_output1 = digit_caps_layer(conv_caps, batch_size)
         # (?, 1, caps, dims, 1)
         #
@@ -76,7 +76,7 @@ class Model(object):
 
         correct = tf.equal(correct_labels_placeholder, single_digit_prediction)
         accuracy = tf.reduce_mean(tf.cast(correct, tf.float32))
-        optimizer = tf.train.AdamOptimizer()
+        optimizer = tf.train.AdamOptimizer(learning_rate=0.001)
         self.training_op = optimizer.minimize(final_loss)
 
         self.digit_caps_routing_output = final_model_output
