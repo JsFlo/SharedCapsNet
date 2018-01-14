@@ -26,12 +26,12 @@ class Model(object):
         conv_caps2 = conv_caps_layer2(input_image_batch)
         print("conv2: {}".format(conv_caps2.shape))
 
-        # conv_caps_layer3 = ConvCapsuleLayer(1152, 3, SingleConvOutput())
-        # conv_caps3 = conv_caps_layer3(input_image_batch)
-        # print("conv3: {}".format(conv_caps3.shape))
+        conv_caps_layer3 = ConvCapsuleLayer(1152, 4, SingleConvOutput())
+        conv_caps3 = conv_caps_layer3(input_image_batch)
+        print("conv3: {}".format(conv_caps3.shape))
 
         # conv_caps = tf.concat([conv_caps1, conv_caps2, conv_caps3], 1)
-        conv_caps = tf.concat([conv_caps1, conv_caps2], 1)
+        conv_caps = tf.concat([conv_caps3, conv_caps2], 1)
         print("conv caps shape: {}".format(conv_caps.shape))
         # conv_caps = tf.concat([conv_caps, conv_caps3], 1)
 
