@@ -1,0 +1,324 @@
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 3
+conv caps: 540 dims: 3
+digit caps: 10 dims: 10
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.320%  Loss: 0.95264 Margin Loss: 0.05270 ReconLoss: 899.93420
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 4
+conv caps: 540 dims: 4
+digit caps: 10 dims: 10
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.620%  Loss: 0.91614 Margin Loss: 0.04949 ReconLoss: 866.65179
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 5
+conv caps: 540 dims: 5
+digit caps: 10 dims: 10
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.920%  Loss: 0.89674 Margin Loss: 0.04061 ReconLoss: 856.13373
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 6
+conv caps: 540 dims: 6
+digit caps: 10 dims: 10
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.740%  Loss: 0.91211 Margin Loss: 0.04385 ReconLoss: 868.26025
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 7
+conv caps: 540 dims: 7
+digit caps: 10 dims: 10
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.900%  Loss: 0.88682 Margin Loss: 0.04128 ReconLoss: 845.54431
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 8
+conv caps: 540 dims: 8
+digit caps: 10 dims: 10
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.940%  Loss: 0.87392 Margin Loss: 0.03698 ReconLoss: 836.94080
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 3
+conv caps: 540 dims: 3
+digit caps: 10 dims: 11
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.400%  Loss: 1.01045 Margin Loss: 0.05921 ReconLoss: 951.24164
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 4
+conv caps: 540 dims: 4
+digit caps: 10 dims: 11
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.820%  Loss: 0.88692 Margin Loss: 0.04670 ReconLoss: 840.21716
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 5
+conv caps: 540 dims: 5
+digit caps: 10 dims: 11
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.580%  Loss: 0.89998 Margin Loss: 0.05014 ReconLoss: 849.84161
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 6
+conv caps: 540 dims: 6
+digit caps: 10 dims: 11
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.920%  Loss: 0.86972 Margin Loss: 0.04466 ReconLoss: 825.05682
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 7
+conv caps: 540 dims: 7
+digit caps: 10 dims: 11
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.980%  Loss: 0.86717 Margin Loss: 0.04361 ReconLoss: 823.55914
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 8
+conv caps: 540 dims: 8
+digit caps: 10 dims: 11
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.500%  Loss: 0.83865 Margin Loss: 0.02603 ReconLoss: 812.61719
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 3
+conv caps: 540 dims: 3
+digit caps: 10 dims: 12
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.460%  Loss: 0.92492 Margin Loss: 0.05648 ReconLoss: 868.44281
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 4
+conv caps: 540 dims: 4
+digit caps: 10 dims: 12
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.640%  Loss: 0.87055 Margin Loss: 0.04845 ReconLoss: 822.09979
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 5
+conv caps: 540 dims: 5
+digit caps: 10 dims: 12
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.660%  Loss: 0.84495 Margin Loss: 0.04704 ReconLoss: 797.90399
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 6
+conv caps: 540 dims: 6
+digit caps: 10 dims: 12
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.440%  Loss: 0.88678 Margin Loss: 0.04689 ReconLoss: 839.88971
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 7
+conv caps: 540 dims: 7
+digit caps: 10 dims: 12
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.020%  Loss: 0.84955 Margin Loss: 0.04098 ReconLoss: 808.56787
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 8
+conv caps: 540 dims: 8
+digit caps: 10 dims: 12
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.920%  Loss: 0.86992 Margin Loss: 0.04224 ReconLoss: 827.67352
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 3
+conv caps: 540 dims: 3
+digit caps: 10 dims: 13
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 96.820%  Loss: 0.98598 Margin Loss: 0.06398 ReconLoss: 922.00885
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 4
+conv caps: 540 dims: 4
+digit caps: 10 dims: 13
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.020%  Loss: 0.84399 Margin Loss: 0.04455 ReconLoss: 799.43079
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 5
+conv caps: 540 dims: 5
+digit caps: 10 dims: 13
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.060%  Loss: 0.92973 Margin Loss: 0.05842 ReconLoss: 871.31250
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 6
+conv caps: 540 dims: 6
+digit caps: 10 dims: 13
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.820%  Loss: 0.86537 Margin Loss: 0.04502 ReconLoss: 820.35498
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 7
+conv caps: 540 dims: 7
+digit caps: 10 dims: 13
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.720%  Loss: 0.82705 Margin Loss: 0.04397 ReconLoss: 783.07117
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 8
+conv caps: 540 dims: 8
+digit caps: 10 dims: 13
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.000%  Loss: 0.81245 Margin Loss: 0.03909 ReconLoss: 773.36212
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 3
+conv caps: 540 dims: 3
+digit caps: 10 dims: 14
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.240%  Loss: 0.91417 Margin Loss: 0.05711 ReconLoss: 857.06470
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 4
+conv caps: 540 dims: 4
+digit caps: 10 dims: 14
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.500%  Loss: 0.85970 Margin Loss: 0.05292 ReconLoss: 806.77850
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 5
+conv caps: 540 dims: 5
+digit caps: 10 dims: 14
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.800%  Loss: 0.84752 Margin Loss: 0.04792 ReconLoss: 799.60040
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 6
+conv caps: 540 dims: 6
+digit caps: 10 dims: 14
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.660%  Loss: 0.83880 Margin Loss: 0.04705 ReconLoss: 791.74756
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 7
+conv caps: 540 dims: 7
+digit caps: 10 dims: 14
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.800%  Loss: 0.82954 Margin Loss: 0.04197 ReconLoss: 787.56818
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 8
+conv caps: 540 dims: 8
+digit caps: 10 dims: 14
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.020%  Loss: 0.83774 Margin Loss: 0.04282 ReconLoss: 794.91846
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 3
+conv caps: 540 dims: 3
+digit caps: 10 dims: 15
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.300%  Loss: 0.91894 Margin Loss: 0.05748 ReconLoss: 861.45673
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 4
+conv caps: 540 dims: 4
+digit caps: 10 dims: 15
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.360%  Loss: 0.87041 Margin Loss: 0.05315 ReconLoss: 817.26147
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 5
+conv caps: 540 dims: 5
+digit caps: 10 dims: 15
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.760%  Loss: 0.83923 Margin Loss: 0.04603 ReconLoss: 793.19757
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 6
+conv caps: 540 dims: 6
+digit caps: 10 dims: 15
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.940%  Loss: 0.84850 Margin Loss: 0.04436 ReconLoss: 804.14166
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 7
+conv caps: 540 dims: 7
+digit caps: 10 dims: 15
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 97.780%  Loss: 0.83767 Margin Loss: 0.04508 ReconLoss: 792.59869
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 8
+conv caps: 540 dims: 8
+digit caps: 10 dims: 15
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.160%  Loss: 0.80481 Margin Loss: 0.03165 ReconLoss: 773.15875
