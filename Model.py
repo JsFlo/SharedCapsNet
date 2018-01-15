@@ -17,28 +17,30 @@ class Model(object):
 
     '''
 
-    def __init__(self, input_image_batch, batch_size):
-        conv_caps_layer1 = ConvCapsuleLayer(1152, 4, SmallConvOutput())
+    def __init__(self, input_image_batch, batch_size, n_duo_conv_caps_36_x=15, n_duo_conv_dims=5, n_digit_caps=10, n_digit_dims=10):
+        #multiple of 36
+        conv_caps_layer1 = ConvCapsuleLayer(n_duo_conv_caps_36_x * 36, n_duo_conv_dims, SmallConvOutput())
         conv_caps1 = conv_caps_layer1(input_image_batch)
 
         print("conv1: {}".format(conv_caps1.shape))
-        conv_caps_layer2 = ConvCapsuleLayer(1152, 4, SimpleConvOutput())
+        conv_caps_layer2 = ConvCapsuleLayer(n_duo_conv_caps_36_x * 36, n_duo_conv_dims, SimpleConvOutput())
         conv_caps2 = conv_caps_layer2(input_image_batch)
         print("conv2: {}".format(conv_caps2.shape))
 
-        conv_caps_layer3 = ConvCapsuleLayer(1152, 4, SingleConvOutput())
-        conv_caps3 = conv_caps_layer3(input_image_batch)
-        print("conv3: {}".format(conv_caps3.shape))
+        # conv_caps_layer3 = ConvCapsuleLayer(1152, 4, SingleConvOutput())
+        # conv_caps3 = conv_caps_layer3(input_image_batch)
+        # print("conv3: {}".format(conv_caps3.shape))
 
         # conv_caps = tf.concat([conv_caps1, conv_caps2, conv_caps3], 1)
-        conv_caps = tf.concat([conv_caps3, conv_caps2], 1)
+        conv_caps = tf.concat([conv_caps1, conv_caps2], 1)
         print("conv caps shape: {}".format(conv_caps.shape))
         # conv_caps = tf.concat([conv_caps, conv_caps3], 1)
 
         # conv_caps_layer = ConvCapsuleLayer(1152, 3)
         # conv_caps = conv_caps_layer(input_image_batch)
 
-        digit_caps_layer = CapsuleLayer(1152 + 1152, 4, 10, 10, ConvAdapter())
+        digit_caps_layer = CapsuleLayer(conv_caps1.shape[1].value + conv_caps2.shape[1].value, conv_caps1.shape[2].value
+                                        , n_digit_caps, n_digit_dims, ConvAdapter())
         routing_output1 = digit_caps_layer(conv_caps, batch_size)
         # (?, 1, caps, dims, 1)
         #
