@@ -17,7 +17,7 @@ class Model(object):
 
     '''
 
-    def __init__(self, input_image_batch, batch_size, n_duo_conv_caps_36_x=15, n_duo_conv_dims=5, n_digit_caps=10, n_digit_dims=10):
+    def __init__(self, input_image_batch, batch_size, n_duo_conv_caps_36_x=15, n_duo_conv_dims=5, n_digit_caps=10, n_digit_dims=10, reconstruction_alpha=0.001):
         #multiple of 36
         conv_caps_layer1 = ConvCapsuleLayer(n_duo_conv_caps_36_x * 36, n_duo_conv_dims, SmallConvOutput())
         conv_caps1 = conv_caps_layer1(input_image_batch)
@@ -72,7 +72,6 @@ class Model(object):
                                                                                    input_image_batch)
 
         # keep it small
-        reconstruction_alpha = 0.001
         # favor the margin loss with a small weight for reconstruction loss
         final_loss = tf.add(margin_loss, reconstruction_alpha * reconstruction_loss)
 
