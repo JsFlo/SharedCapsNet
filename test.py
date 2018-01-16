@@ -38,7 +38,7 @@ create_dirs_if_not_exists(FLAGS.checkpoint_dir)
 input_image_batch = tf.placeholder(shape=[None, 28, 28, 1], dtype=tf.float32)
 batch_size = tf.shape(input_image_batch)[0]
 
-model = Model(input_image_batch, batch_size)
+model = Model(input_image_batch, batch_size, 15, 13, 10, 17, .001)
 
 training_op = model.training_op
 final_loss = model.final_loss
