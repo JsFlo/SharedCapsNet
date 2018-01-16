@@ -322,3 +322,29 @@ conv caps: 540 dims: 8
 digit caps: 10 dims: 15
 reconstruction loss: 0.001
 Epoch: 1  Val accuracy: 98.160%  Loss: 0.80481 Margin Loss: 0.03165 ReconLoss: 773.15875
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 8
+conv caps: 540 dims: 8
+digit caps: 10 dims: 16
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.100%  Loss: 0.77927 Margin Loss: 0.04001 ReconLoss: 739.25061
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 9
+conv caps: 540 dims: 9
+digit caps: 10 dims: 16
+reconstruction loss: 0.001
+Epoch: 1  Val accuracy: 98.100%  Loss: 0.79711 Margin Loss: 0.04102 ReconLoss: 756.08398
+
+
+ SINGLE TEST TRAIN
+
+conv caps: 540 dims: 10
+conv caps: 540 dims: 10
+digit caps: 10 dims: 16
+reconstruction loss: 0.001
